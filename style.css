@@ -33,8 +33,7 @@ label {
     font-size: 14px;
 }
 
-.moeda,
-input, .currency-select {
+select, input {
     background: #ffffff;
     border: 1px solid #bbbbbb;
     border-radius: 4px;

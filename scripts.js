@@ -1,5 +1,6 @@
 const convertButton = document.querySelector(".button-converter");
-const currencySelect = document.querySelector(".currency-select");
+const currencySelectFirst = document.querySelector(".currency-select-first");
+
 
 function convertValues() {
     const inputCurrencyValue = document.querySelector(".currency-input").value
@@ -9,14 +10,14 @@ function convertValues() {
     const dolarToday = 5.25
     const euroToday = 6.45
 
-    if (currencySelect.value == "dolar") {
+    if (currencySelectFirst.value == "dolar") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
         }).format(inputCurrencyValue / dolarToday)
     }
 
-    if (currencySelect.value == "euro") {
+    if (currencySelectFirst.value == "euro") {
         currencyValueConverted.innerHTML = new Intl.NumberFormat('de-DE', {
             style: 'currency',
             currency: 'EUR',
@@ -36,22 +37,28 @@ function convertValues() {
 }
 
 function changeCurrancy() {
-    const currencyName = document.getElementById("currency-name")
+    const currencyDolar = document.getElementById("currency-dolar")
+    const currencyReal = document.getElementById("currency-real")
+    const currencyEuro = document.getElementById("currency-euro")
     const currencyImage = document.querySelector(".logo-converted")
 
-    if (currencySelect.value == "dolar") {
+    if (currencySelectFirst.value == "dolar") {
         currencyName.innerHTML = "Dólar americano"
         currencyImage.src = "./assets/estados-unidos (1) 1.png"
 
     }
-    if (currencySelect.value == "euro") {
+    if (currencySelectFirst.value == "euro") {
         currencyName.innerHTML = "Euro"
         currencyImage.src = "./assets/euro.png"
+    }
+    if (currencySelectFirst.value == "real") {
+        currencyName.innerHTML = "Real"
+        currencyImage.src = "./assets/brasil 2.png"
     }
 
     convertValues()
 }
 
 
-currencySelect.addEventListener("change", changeCurrancy)
+currencySelectFirst.addEventListener("change", changeCurrancy)
 convertButton.addEventListener("click", convertValues)
